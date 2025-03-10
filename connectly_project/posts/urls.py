@@ -2,10 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
-from .views import (
-    UserListCreate, UserDetail,
-    PostListCreate, CommentListCreate,
-)
+from .views import (UserListCreate, UserDetail, PostListCreate, CommentListCreate)
 
 urlpatterns = [    
     # User endpoints
