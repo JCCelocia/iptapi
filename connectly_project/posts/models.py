@@ -4,13 +4,12 @@ from django.db import models
 class User(AbstractUser):  
     email = models.EmailField(unique=True)  
     username = models.CharField(max_length=150, unique=True)  
-    password = models.CharField(max_length=128)  # Explicitly define password
+    password = models.CharField(max_length=128)
 
     def set_password(self, raw_password):  
         from django.contrib.auth.hashers import make_password  
         self.password = make_password(raw_password)
 
-    
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -18,9 +17,7 @@ class User(AbstractUser):
 
 
 class Post(models.Model):
-    """
-    Represents a post created by a user.
-    """
+    
     content = models.TextField(blank=False)
     author = models.ForeignKey(
         User, 
@@ -39,9 +36,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    """
-    Represents a comment made on a post by a user.
-    """
+    
     text = models.TextField(blank=False)
     author = models.ForeignKey(
         User, 
